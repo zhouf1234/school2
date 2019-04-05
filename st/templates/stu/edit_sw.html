@@ -1,0 +1,117 @@
+<div class="edit" role="document" data-id="{{sw.id}}"  style="width: 650px;margin-left: 100px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" id="close0">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">编辑作业</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="editForm">
+		  <div class="form-group">
+		    <label for="inputEmailEdit" class="col-sm-2 control-label">题目:</label>
+		    <div class="col-sm-10">
+{#		      <input type="email" class="form-control" id="inputEmailEdit" value="fmuncle@163" readonly>#}
+                <textarea  cols="70" rows="6" readonly>{{ sw.sw_title.title}}</textarea>
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="inputNameEdit" class="col-sm-2 control-label">解答:</label>
+		    <div class="col-sm-10">
+		      <textarea name="answer" id="answer" cols="70" rows="10">{{ sw.answer|default:"" }}</textarea>
+		    </div>
+		  </div>
+         <div class="form-group">
+		    <label for="inputNameEdit" class="col-sm-2 control-label">学生留言:</label>
+		    <div class="col-sm-10">
+		      <input type="text"  class="form-control" name="message" id="message" value="{{sw.message|default:""}}">
+		    </div>
+		  </div>
+
+		</form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link" id="close">取消</button>
+        <button type="submit" class="btn btn-primary" form="addForm" id="btn">提交</button>
+      </div>
+    </div>
+</div>
+
+<div class="clear" style="clear: both;"></div>
+<div id="messagee" class="messagee" style="width: 400px;height: 200px;background-color: white;border: 2px solid #EAF2D3;top: 100px;left:360px;position: absolute;display: none">
+    <h4 style="font-size: 32px;margin-left: 122px;margin-top: 20px;color: black">成功！</h4>
+    <div class="addd" style="width: 104px;height: 38px;border: 1px solid #98bf21;cursor: pointer;text-align: center;font-size: 22px;margin-top: 50px;margin-left: 140px;">返回</div>
+</div>
+
+<script>
+    $('#close').click(()=>{
+          $.ajax({
+                    url: '/st/write_list/',
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+
+    $('#close0').click(()=>{
+          $.ajax({
+                    url: '/st/write_list/',
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+
+    var get_val = ()=>{
+        // 获取具体的值
+        var answer = $('#answer').val();//
+        var message = $('#message').val();
+
+        var sw_data = {
+            'answer':answer,
+            'message':message,
+
+        };
+        sw_data = JSON.stringify(sw_data);
+        return sw_data;
+    };
+
+    $('#btn').click(()=>{
+        var data = get_val();
+        var sw_id = $(".edit").data('id');
+        $.ajax({
+            url:'/st/update_sw/',
+            type:'post',
+            async:false,
+            data:{
+                'data':data,
+                'sw_id':sw_id
+            },
+            success:(data)=>{
+                console.log(data);
+                    $('.messagee').css('display','block');
+                {#alert(data)#}
+                {#alert("修改成功，点击确认后跳转回首页......");#}
+            }
+        })
+    });
+
+    $('.addd').click(()=>{
+        $('.messagee').css('display','none');
+        $.ajax({
+                    url: '/st/write_list/',
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+
+
+
+</script>

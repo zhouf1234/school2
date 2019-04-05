@@ -1,0 +1,87 @@
+<div  role="document" style="width: 650px;margin-left: 100px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" id="close0">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">作业详细</h4>
+      </div>
+      <div class="modal-body">
+    		<table class="table table-bordered table-hover table-striped table-responsive">
+    			<tbody>
+    				<tr>
+    					<td width="25%">题目</td>
+    					<td width="75%">{{ sw.sw_title.title }}</td>
+    				</tr>
+    				<tr>
+    					<td>解答</td>
+    					<td>{{ sw.answer|default:'' }}</td>
+    				</tr>
+    				<tr>
+    					<td>学生留言</td>
+    					<td>{{ sw.message|default:''}}</td>
+    				</tr>
+    				<tr>
+    					<td>老师打分</td>
+    					<td>{{ sw.frac|default:' '  }}</td>
+    				</tr>
+    				<tr>
+    					<td>老师评语</td>
+    					<td>{{ sw.ask|default:' '  }}</td>
+    				</tr>
+    				<tr>
+    					<td>学生是否提交</td>
+    					<td>
+                            {% if sw.is_sub == 0 %}
+                                否
+                            {% elif sw.is_sub == 1%}
+                                是
+                            {% endif %}
+
+                        </td>
+    				</tr>
+    				<tr>
+    					<td>老师是否批改</td>
+    					<td>
+                            {% if sw.is_cor == 0 %}
+                                否
+                            {% elif sw.is_cor == 1%}
+                                是
+                            {% endif %}
+                        </td>
+    				</tr>
+    				<tr>
+    					<td>最近编辑时间</td>
+    					<td>{{ sw.days}}</td>
+    				</tr>
+    			</tbody>
+    		</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="close">关闭</button>
+
+      </div>
+    </div>
+</div>
+
+<script>
+    $('#close').click(()=>{
+          $.ajax({
+                    url: '/st/write_list/',
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+
+    $('#close0').click(()=>{
+          $.ajax({
+                    url: '/st/write_list/',
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+</script>

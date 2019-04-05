@@ -1,0 +1,153 @@
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" id="close0">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">添加新试题</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="editForm">
+
+         <div class="form-group">
+            <label for="inputStudentName" class="col-sm-3 control-label">题目</label>
+            <div class="col-sm-8" style="top: 6px">
+              <textarea name="wtitle" id="wtitle" cols="50" rows="3" placeholder="请输入题目" style="margin-left:15px"></textarea>
+            </div>
+         </div>
+
+            <div class="form-group">
+            <label for="inputStudentName" class="col-sm-3 control-label">选项A</label>
+            <div class="col-sm-8" style="top: 6px">
+              <textarea name="is_a" id="is_a" cols="50" rows="2" placeholder="请输入选项A的解答" style="margin-left:15px"></textarea>
+            </div>
+         </div>
+
+		  <div class="form-group">
+            <label for="inputStudentName" class="col-sm-3 control-label">选项B</label>
+            <div class="col-sm-8" style="top: 6px">
+              <textarea name="is_b" id="is_b" cols="50" rows="2" placeholder="请输入选项B的解答" style="margin-left:15px"></textarea>
+            </div>
+         </div>
+
+            <div class="form-group">
+            <label for="inputStudentName" class="col-sm-3 control-label">选项C</label>
+            <div class="col-sm-8" style="top: 6px">
+              <textarea name="is_c" id="is_c" cols="50" rows="2" placeholder="请输入选项C的解答" style="margin-left:15px"></textarea>
+            </div>
+         </div>
+
+            <div class="form-group">
+            <label for="inputStudentName" class="col-sm-3 control-label">选项D</label>
+            <div class="col-sm-8" style="top: 6px">
+              <textarea name="is_d" id="is_d" cols="50" rows="2" placeholder="请输入选项D的解答" style="margin-left:15px"></textarea>
+            </div>
+         </div>
+
+            <div class="form-group">
+            <label for="inputStudentName" class="col-sm-3 control-label">正确答案</label>
+            <div class="col-sm-8" style="top: 6px">
+              <textarea name="anw" id="anw" cols="50" rows="2" placeholder="正确答案" style="margin-left:15px"></textarea>
+            </div>
+         </div>
+
+            <div class="form-group">
+            <label for="inputStudentName" class="col-sm-3 control-label">本题计分</label>
+            <div class="col-sm-8" style="top: 6px">
+              <textarea name="fs" id="fs" cols="50" rows="1" placeholder="请输入分数" style="margin-left:15px"></textarea>
+            </div>
+         </div>
+
+		</form>
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link" id="close">取消</button>
+        <button type="submit" class="btn btn-primary" form="addForm" id="btn">提交</button>
+      </div>
+    </div>
+</div>
+
+<div class="clear" style="clear: both;"></div>
+<div id="message" class="message" style="width: 400px;height: 200px;background-color: white;border: 2px solid #EAF2D3;top: 80px;left:360px;position: absolute;display: none">
+    <h4 style="font-size: 32px;margin-left: 102px;margin-top: 20px;color: black">添加成功！</h4>
+    <div class="add" style="width: 104px;height: 38px;border: 1px solid #98bf21;cursor: pointer;text-align: center;font-size: 22px;margin-top: 50px;margin-left: 40px;">继续添加</div>
+    <div class="list" style="width: 104px;height: 38px;border: 1px solid #98bf21;cursor: pointer;text-align: center;font-size: 22px;margin-top: -38px;margin-left: 240px;">查看</div>
+</div>
+
+<script>
+
+    $('#close').click(()=>{
+          $.ajax({
+                    url: '/st/wpaper_list/',  //回到试题试卷展示页面
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+
+    $('#close0').click(()=>{
+          $.ajax({
+                    url: '/st/wpaper_list/',
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+
+    $('#btn').click(()=>{
+        var wtitle = $("#wtitle").val();
+        var is_a =$('#is_a').val();
+        var is_b = $("#is_b").val();
+        var is_c =$('#is_c').val();
+        var is_d = $("#is_d").val();
+        var anw =$('#anw').val();
+        var fs =$('#fs').val();
+
+        $.ajax({
+                url: '/st/addss_wpaper/',
+                type: 'post',
+                data: {
+                    'wtitle': wtitle,
+                    'is_a':is_a,
+                    'is_b':is_b,
+                    'is_c':is_c,
+                    'is_d':is_d,
+                    'anw':anw,
+                    'fs':fs,
+                },
+                success: (data) => {
+                    if (data['status'] === 'success') {  //判断
+                        $('.message').css('display', 'block');
+                    }
+                }
+            })
+        });
+
+    //提交成功后跳出的框内的操作
+    $('.list').click(()=>{
+        $.ajax({
+            url:'/st/wpaper_list/',
+            type:'get',
+            success:(data)=>{
+                $('#mian').css('display', 'block');
+                $('.infof').html(data);
+            }
+        })
+    });
+    $('.add').click(()=>{
+        $('.message').css('display','none');
+        $.ajax({
+            url:'/st/add_wpaper/',
+            type:'get',
+            success:(data)=>{
+                $('#mian').css('display', 'block');
+                $('.infof').html(data);
+            }
+       })
+    });
+
+</script>

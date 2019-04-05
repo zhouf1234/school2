@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>编辑学生成绩页面</title>
+  <link rel="stylesheet" href="/static/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+ </head>
+ <body>
+ <div class="container">
+     <div class="page-header">
+         <h1>学生成绩管理
+             <small>编辑学生成绩</small>
+         </h1>
+     </div>
+
+{# 提交班级信息的表单 开始；action="/edit_teacher/" 是url路径，method="post" 是获取信息的方法#}
+<div class="row">
+     <div class="col-md-6 col-md-offset-3">
+        <form class="form-horizontal" action="/edit_index/" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="inputStudentName" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <input name="id" type="text" class="form-control" id="inputStudentID"
+                           value="{{ student.id }}" style="display:none">
+                </div>
+            </div>
+
+          <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">学生姓名</label>
+            <div class="col-sm-10">
+              <input name="name" type="text" class="form-control" id="inputStudentName" value="{{ student.name}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputClassName" class="col-sm-2 control-label">所在班级</label>
+            <div class="col-sm-10">
+                <select class="form-control" name="sclass" id="class_id">
+                  {% for class in class_list %}
+                          <option value="{{ class.id }}">{{ class.cname }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+          </div>
+
+        <div class="form-group">
+              <div>
+                <label for="inputStudentName" class="col-sm-2 control-label">课程1</label>
+                <div class="col-sm-4">
+                 <select class="form-control" name="kec1" id="kec_id">
+                    {% for class in class_list %}
+                        {% for kec in class.ckec.all %}
+                            {% if class.id == 1 %}
+                                <option value="{{ class.id }}">{{ kec.kname }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+              </select>
+                </div>
+              </div>
+             <div>
+                <label for="inputStudentName" class="col-sm-2 control-label">分数</label>
+                <div class="col-sm-4">
+                  <input name="yuwen" type="text" class="form-control" id="inputTeacherName" value="{{ student.detall.yuwen}}">
+                </div>
+              </div>
+          </div>
+
+        <div class="form-group">
+              <div>
+                <label for="inputStudentName" class="col-sm-2 control-label">课程2</label>
+                <div class="col-sm-4">
+                    <select class="form-control" name="kec2" id="kec_id">
+                        {% for class in class_list %}
+                            {% for kec in class.ckec.all %}
+                                {% if class.id == 1 %}
+                                    <option value="{{ class.id }}">{{ kec.kname }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                  </select>
+                </div>
+              </div>
+             <div>
+                <label for="inputStudentName" class="col-sm-2 control-label">分数</label>
+                <div class="col-sm-4">
+                  <input name="math" type="text" class="form-control" id="inputTeacherName" value="{{ student.deta.math}}">
+                </div>
+              </div>
+          </div>
+
+        <div class="form-group">
+              <div>
+                <label for="inputStudentName" class="col-sm-2 control-label">课程3</label>
+                <div class="col-sm-4">
+                <select class="form-control" name="kec3" id="kec_id">
+                    {% for class in class_list %}
+                        {% for kec in class.ckec.all %}
+                            {% if class.id == 1 %}
+                                <option value="{{ class.id }}">{{ kec.kname }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+              </select>
+                </div>
+              </div>
+             <div>
+                <label for="inputStudentName" class="col-sm-2 control-label">分数</label>
+                <div class="col-sm-4">
+                  <input name="english" type="text" class="form-control" id="inputTeacherName" value="{{ student.de.english}}">
+                </div>
+              </div>
+          </div>
+
+        <div class="form-group">
+              <div>
+                <label for="inputStudentName" class="col-sm-2 control-label">课程4</label>
+                <div class="col-sm-4">
+                 <select class="form-control" name="kec4" id="kec_id">
+                    {% for class in class_list %}
+                        {% for kec in class.ckec.all %}
+                            {% if class.id == 1 %}
+                                <option value="{{ class.id }}">{{ kec.kname}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+              </select>
+                </div>
+              </div>
+             <div>
+                <label for="inputStudentName" class="col-sm-2 control-label">分数</label>
+                <div class="col-sm-4">
+                  <input name="four" type="text" class="form-control" id="inputTeacherName" value="{{ student.fou.four}}">
+                </div>
+              </div>
+          </div>
+
+        <div class="form-group">
+              <div>
+                <label for="inputStudentName" class="col-sm-2 control-label">课程5</label>
+                <div class="col-sm-4">
+                 <select class="form-control" name="kec5" id="kec_id">
+                    {% for class in class_list %}
+                        {% for kec in class.ckec.all %}
+                            {% if class.id == 1 %}
+                                <option value="{{ class.id }}">{{ kec.kname }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+              </select>
+                </div>
+              </div>
+             <div>
+                <label for="inputStudentName" class="col-sm-2 control-label">分数</label>
+                <div class="col-sm-4">
+                  <input name="five" type="text" class="form-control" id="inputTeacherName" value="{{ student.fiv.five}}">
+                </div>
+              </div>
+          </div>
+
+        <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">选修课</label>
+            <div class="col-sm-4">
+              <select class="form-control" name="xkc" id="student_id">
+                  {% for xkc in xuc_list %}
+                      {% if xkc in student.xecs.all %}
+                          <option selected value="{{ xkc.id }}">{{ xkc.xname }}</option>
+                      {% else %}
+                          <option  value="{{ xkc.id }}">{{ xkc.xname }}</option>
+                      {% endif %}
+                  {% endfor %}
+              </select>
+            </div>
+          </div>
+
+           <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-success">提交</button>
+
+            </div>
+          </div>
+        </form>
+        </div>
+    </div>
+ {# 提交班级信息的表单 结束 #}
+ </div>
+  
+ </body>
+</html>

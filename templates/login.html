@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>登录Document</title>
+ <link href="/static/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+ <style>
+	body{
+		background-color:#eee;
+	}
+	#login-form{
+		margin-top:100px;
+	}
+ </style>
+ </head>
+ <body>
+  <div class='container'>
+  	<div class='row'>
+		<form id='login-form' class='form-horizontal col-md-4 col-md-offset-4' action="/login/" method="post">
+		<!---horizontal水平排列的表单和表单控件同用--->
+            {% csrf_token %}
+			<h3 class='text-center'>请登录</h3>
+			<div class='form-group'>                                              <!---四个class='form-group',四个表单控件--->
+				<label for="inputText3" class='col-sm-2 control-label'>用户</label>   <!---这个class使之在手机端查看时不走形--->
+				<div class='col-sm-10'>         <!---邮箱占了2格，所以输入框占10格--->  
+					<input type="text" name= "user" class="form-control" id="inputText3" placeholder="User">
+				</div>
+			</div>
+
+			<div class='form-group'>
+				<label for="inputPassword1" class='col-sm-2 control-label'>密码</label>
+				<div class='col-sm-10'>
+					<input type="password" name="pwd" class='form-control' id='inputPassword1' placeholder='Password'>
+				</div>
+			</div>
+
+{#			<div class='form-group'>#}
+{#				<div class='col-sm-offset-2 col-sm-10'>   <!---邮箱字占了2格，所以要水平对齐，也左边空2格---> #}
+{#					<div class='checkbox'>#}
+{#						<label>#}
+{#							<input type="checkbox">记住我#}
+{#						</label>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+
+			<div class='form-group'>
+				<div class='col-sm-offset-2 col-sm-10'>   <!---btn-block:使之铺满，不写就是一个小按钮--->  
+					<button type='submit' class='btn btn-primary btn-block'>登录</button>
+				</div>
+                <h5 style="color:red" class='col-sm-offset-2 col-sm-10'>{{error}}</h5>
+			</div>
+		</form>
+	</div>
+  </div>
+ </body>
+</html>

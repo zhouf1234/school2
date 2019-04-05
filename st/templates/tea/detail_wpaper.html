@@ -1,0 +1,78 @@
+<div class="modal-dialog" role="document" style="width: 850px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" id="close0">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">试题详情</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="editForm">
+
+            <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">题目</label>
+            <div class="col-sm-10" style="top: 6px">
+{#              <input type="text" class="form-control" name="ptitle"  id="ptitle"   value="{{ paper.ptitle }}">#}
+                <p style="font-size: 14px;">{{ wpaper.wtitle }}</p>
+            </div>
+         </div>
+
+            <div class="form-group">
+		    <label for="inputAddressEdit" class="col-sm-2 control-label">答题选项</label>
+		    <div class="col-sm-10" style="top: 6px">
+		        <input type="radio" name= "pte0" value="A" checked>A: {{ wpaper.is_a }}
+                <input type="radio" name= "pte0" style="margin-left:25px" value="B">B: {{ wpaper.is_b }}
+                <input type="radio" name= "pte0" style="margin-left:25px" value="C">C: {{ wpaper.is_c }}
+                <input type="radio" name= "pte0" style="margin-left:25px" value="D">D: {{ wpaper.is_d }}
+		    </div>
+		  </div>
+
+            <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">正确答案</label>
+            <div class="col-sm-10" style="top: 6px">
+{#              <input type="text" class="form-control" name="ptitle"  id="ptitle"   value="{{ paper.ptitle }}">#}
+                <p style="font-size: 14px;">{{ wpaper.anw }}</p>
+            </div>
+         </div>
+
+            <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">该题计分</label>
+            <div class="col-sm-10" style="top: 6px">
+{#              <input type="text" class="form-control" name="ptitle"  id="ptitle"   value="{{ paper.ptitle }}">#}
+                <p style="font-size: 14px;">{{ wpaper.fs }}分</p>
+            </div>
+         </div>
+
+		</form>
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="close">关闭</button>
+      </div>
+    </div>
+</div>
+
+<script>
+
+    $('#close').click(()=>{
+          $.ajax({
+                    url: '/st/wpaper_list/',  //回到试题试卷展示页面
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+
+    $('#close0').click(()=>{
+          $.ajax({
+                    url: '/st/wpaper_list/',
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+
+</script>

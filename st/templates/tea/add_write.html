@@ -1,0 +1,111 @@
+<div class="container">
+     <div class="page-header">
+        <h2>
+            <small>添加新作业</small>
+        </h2>
+    </div>
+    {# 提交学生信息表单，开始 #}
+     <form class="form-horizontal">
+{#         {% csrf_token %}#}
+      <div class="form-group">
+        <label for="inputClassName" class="col-sm-2 control-label">题目</label>
+        <div class="col-sm-10">
+          <textarea name="title" id="title" cols="80" rows="5" placeholder="请输入题目"></textarea>
+        </div>
+      </div>
+
+         <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">作业要求</label>
+            <div class="col-sm-10">
+              <textarea name="remarks" id="remarks" cols="80" rows="3" placeholder="请输入作业要求"></textarea>
+            </div>
+         </div>
+
+         <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">科目</label>
+            <div class="col-sm-10">
+                <input type="text" name="subject" id="subject" placeholder="科目">
+            </div>
+         </div>
+
+         <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">出题老师</label>
+            <div class="col-sm-10">
+                <input type="text" name="teacher" id="teacher" placeholder="出题老师">
+            </div>
+         </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="button" class="btn btn-link" id="close">取消</button>
+          <button type="submit" class="btn btn-default" id="btn">提交</button>
+        </div>
+      </div>
+     </form>
+ </div>
+
+<div class="clear" style="clear: both;"></div>
+<div id="message" class="message" style="width: 400px;height: 200px;background-color: white;border: 2px solid #EAF2D3;top: 80px;left:360px;position: absolute;display: none">
+    <h4 style="font-size: 32px;margin-left: 102px;margin-top: 20px;color: black">添加成功！</h4>
+    <div class="add" style="width: 104px;height: 38px;border: 1px solid #98bf21;cursor: pointer;text-align: center;font-size: 22px;margin-top: 50px;margin-left: 40px;">继续添加</div>
+    <div class="list" style="width: 104px;height: 38px;border: 1px solid #98bf21;cursor: pointer;text-align: center;font-size: 22px;margin-top: -38px;margin-left: 240px;">查看</div>
+</div>
+<script>
+
+    $('#close').click(()=>{
+          $.ajax({
+                    url: '/st/add_write/',
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+
+    $('#btn').click(()=>{
+        var title = $("#title").val();
+        var remarks =$('#remarks').val();
+        var subject = $("#subject").val();
+        var teacher =$('#teacher').val();
+
+        $.ajax({
+                url: '/st/addss_write/',
+                type: 'post',
+                data: {
+                    'title': title,
+                    'remarks':remarks,
+                    'subject':subject,
+                    'teacher':teacher,
+                },
+                success: (data) => {
+                    if (data['status'] === 'success') {  //判断
+                        $('.message').css('display', 'block');
+                    }
+                }
+            })
+        });
+
+    //提交成功后跳出的框内的操作
+    $('.list').click(()=>{
+        $.ajax({
+            url:'/st/add_write/',
+            type:'get',
+            success:(data)=>{
+                $('#mian').css('display', 'block');
+                $('.infof').html(data);
+            }
+        })
+    });
+    $('.add').click(()=>{
+        $('.message').css('display','none');
+        $.ajax({
+            url:'/st/adds_write/',
+            type:'get',
+            success:(data)=>{
+                $('#mian').css('display', 'block');
+                $('.infof').html(data);
+            }
+       })
+    });
+</script>

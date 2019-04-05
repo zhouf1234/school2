@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+ <link href="/static/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>首页</title>
+<script src="/static/js/jquery-1.11.3.js"></script>
+<script src="/static/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+ </head>
+ <body>
+ <nav class="navbar navbar-inverse">  <!---导航条部分--->
+  <div class="container">
+    <div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{ value }},欢迎你！</a>
+    </div>
+	 <!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav">
+{#			<li class="active"><a href="#">Link学院<span class="sr-only">(current)</span></a></li>#}
+			<li><a href="#">python学院</a></li>
+		 </ul>
+
+		<ul class="nav navbar-nav navbar-right">
+        <li><a href="#">好好学习</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">联系我们<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">联系电话</a></li>
+            <li><a href="#">联系地址</a></li>
+            <li><a href="#">联系客服</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">其他问题</a></li>
+          </ul>
+        </li>
+      </ul>
+	</div>
+  </div>
+</nav>
+<div class='jumbotron'>      <!---巨幕部分--->
+  	<div class='container'>
+        <div class='container col-md-2'>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="/classs/">班级信息</a></li>
+                    <li><a href="/teacher/">老师信息</a></li>
+                    <li><a href="/student/">学生信息</a></li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            学生成绩信息 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/index/">一班</a></li>
+                            <li><a href="/index2/">二班</a></li>
+                            <li><a href="/index3/">三班</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/tea_video/">教学视频</a></li>
+                </ul>
+          </div>
+        <div class="col-md-10">
+            <div class="col-md-10 col-md-offset-2">
+                <h3>{{ value }},欢迎你！</h3>
+                <div style='height:300px'></div>
+            </div>
+        </div>
+	</div>
+ </div>
+
+ </body>
+</html>

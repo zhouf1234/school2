@@ -1,0 +1,302 @@
+<div class="modal-dialog edit" role="document" data-id="{{paper.id}}" style="width: 850px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" id="close0">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">在线测试</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="editForm">
+
+            <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">试卷名称</label>
+            <div class="col-sm-10" style="top: 6px">
+{#              <input type="text" class="form-control" name="ptitle"  id="ptitle"   value="{{ paper.ptitle }}">#}
+                <p style="font-size: 14px;">{{ paper.ptitle }}</p>
+            </div>
+         </div>
+
+            <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">第一题</label>
+            <div class="col-sm-10" style="top: 6px">
+{#                {% for w in pte %}#}
+{#                <textarea name="" id="" cols="93" rows="2">{{pte.wtitle}}</textarea>#}
+{#                    <p style="font-size: 14px;">{{pte.wtitle}}<span>(本题计{{ pte.fs }}分)</span></p>#}
+                    <p style="font-size: 14px;"><span>{{pte.wtitle}}</span>(本题计{{ pte.fs }}分)</p>
+{#                {% endfor %}#}
+
+            </div>
+         </div>
+
+            <div class="form-group">
+		    <label for="inputAddressEdit" class="col-sm-2 control-label">答题选项</label>
+		    <div class="col-sm-10" style="top: 6px">
+		        <input type="radio" name= "pte" value="A" checked>A: {{ pte.is_a }}
+                <input type="radio" name= "pte" style="margin-left:25px" value="B">B: {{ pte.is_b }}
+                <input type="radio" name= "pte" style="margin-left:25px" value="C">C: {{ pte.is_c }}
+                <input type="radio" name= "pte" style="margin-left:25px" value="D">D: {{ pte.is_d }}
+		    </div>
+		  </div>
+
+        <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">第二题</label>
+            <div class="col-sm-10" style="top: 6px">
+              <p style="font-size: 14px;">{{pte2.wtitle}} (本题计{{ pte2.fs }}分)</p>
+            </div>
+         </div>
+
+            <div class="form-group">
+		    <label for="inputAddressEdit" class="col-sm-2 control-label">答题选项</label>
+		    <div class="col-sm-10" style="top: 6px">
+		        <input type="radio" name= "pte2" value="A" checked>A: {{ pte2.is_a }}
+                <input type="radio" name= "pte2" style="margin-left:25px" value="B">B: {{ pte2.is_b }}
+                <input type="radio" name= "pte2" style="margin-left:25px" value="C">C: {{ pte2.is_c }}
+                <input type="radio" name= "pte2" style="margin-left:25px" value="D">D: {{ pte2.is_d }}
+		    </div>
+		  </div>
+
+        <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">第三题</label>
+            <div class="col-sm-10" style="top: 6px">
+              <p style="font-size: 14px;">{{pte3.wtitle}} (本题计{{ pte3.fs }}分)</p>
+            </div>
+         </div>
+
+            <div class="form-group">
+		    <label for="inputAddressEdit" class="col-sm-2 control-label">答题选项</label>
+		    <div class="col-sm-10" style="top: 6px">
+		        <input type="radio" name= "pte3" value="A" checked>A: {{ pte3.is_a }}
+                <input type="radio" name= "pte3"  style="margin-left:25px" value="B">B: {{ pte3.is_b }}
+                <input type="radio" name= "pte3" style="margin-left:25px" value="C">C: {{ pte3.is_c }}
+                <input type="radio" name= "pte3" style="margin-left:25px" value="D">D: {{ pte3.is_d }}
+		    </div>
+		  </div>
+
+        <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">第四题</label>
+            <div class="col-sm-10" style="top: 6px">
+              <p style="font-size: 14px;">{{pte4.wtitle}} (本题计{{ pte4.fs }}分)</p>
+            </div>
+         </div>
+
+            <div class="form-group">
+		    <label for="inputAddressEdit" class="col-sm-2 control-label">答题选项</label>
+		    <div class="col-sm-10" style="top: 6px">
+		        <input type="radio" name= "pte4" value="A" checked>A: {{ pte4.is_a }}
+                <input type="radio" name= "pte4" style="margin-left:25px" value="B">B: {{ pte4.is_b }}
+                <input type="radio" name= "pte4" style="margin-left:25px" value="C">C: {{ pte4.is_c }}
+                <input type="radio" name= "pte4" style="margin-left:25px" value="D">D: {{ pte4.is_d }}
+		    </div>
+		  </div>
+
+        <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">第五题</label>
+            <div class="col-sm-10" style="top: 6px">
+              <p style="font-size: 14px;">{{pte5.wtitle}} (本题计{{ pte5.fs }}分)</p>
+            </div>
+         </div>
+
+            <div class="form-group">
+		    <label for="inputAddressEdit" class="col-sm-2 control-label">答题选项</label>
+		    <div class="col-sm-10" style="top: 6px">
+		        <input type="radio" name= "pte5" value="A" checked>A: {{ pte5.is_a }}
+                <input type="radio" name= "pte5" style="margin-left:25px" value="B">B: {{ pte5.is_b }}
+                <input type="radio" name= "pte5" style="margin-left:25px" value="C">C: {{ pte5.is_c }}
+                <input type="radio" name= "pte5" style="margin-left:25px" value="D">D: {{ pte5.is_d }}
+		    </div>
+		  </div>
+
+        <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">第六题</label>
+            <div class="col-sm-10" style="top: 6px">
+              <p style="font-size: 14px;">{{pte6.wtitle}} (本题计{{ pte6.fs }}分)</p>
+            </div>
+         </div>
+
+            <div class="form-group">
+		    <label for="inputAddressEdit" class="col-sm-2 control-label">答题选项</label>
+		    <div class="col-sm-10" style="top: 6px">
+		        <input type="radio" name= "pte6" value="A" checked>A: {{ pte6.is_a }}
+                <input type="radio" name= "pte6" style="margin-left:25px" value="B">B: {{ pte6.is_b }}
+                <input type="radio" name= "pte6" style="margin-left:25px" value="C">C: {{ pte6.is_c }}
+                <input type="radio" name= "pte6" style="margin-left:25px" value="D">D: {{ pte6.is_d }}
+		    </div>
+		  </div>
+
+        <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">第七题</label>
+            <div class="col-sm-10" style="top: 6px">
+              <p style="font-size: 14px;">{{pte7.wtitle}} (本题计{{ pte7.fs }}分)</p>
+            </div>
+         </div>
+
+            <div class="form-group">
+		    <label for="inputAddressEdit" class="col-sm-2 control-label">答题选项</label>
+		    <div class="col-sm-10" style="top: 6px">
+		        <input type="radio" name= "pte7" value="A" checked>A: {{ pte7.is_a }}
+                <input type="radio" name= "pte7" style="margin-left:25px" value="B">B: {{ pte7.is_b }}
+                <input type="radio" name= "pte7" style="margin-left:25px" value="C">C: {{ pte7.is_c }}
+                <input type="radio" name= "pte7" style="margin-left:25px" value="D">D: {{ pte7.is_d }}
+		    </div>
+		  </div>
+
+        <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">第八题</label>
+            <div class="col-sm-10" style="top: 6px">
+              <p style="font-size: 14px;">{{pte8.wtitle}} (本题计{{ pte8.fs }}分)</p>
+            </div>
+         </div>
+
+            <div class="form-group">
+		    <label for="inputAddressEdit" class="col-sm-2 control-label">答题选项</label>
+		    <div class="col-sm-10" style="top: 6px">
+		        <input type="radio" name= "pte8" value="A" checked>A: {{ pte8.is_a }}
+                <input type="radio" name= "pte8" style="margin-left:25px" value="B">B: {{ pte8.is_b }}
+                <input type="radio" name= "pte8" style="margin-left:25px" value="C">C: {{ pte8.is_c }}
+                <input type="radio" name= "pte8" style="margin-left:25px" value="D">D: {{ pte8.is_d }}
+		    </div>
+		  </div>
+
+        <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">第九题</label>
+            <div class="col-sm-10" style="top: 6px">
+              <p style="font-size: 14px;">{{pte9.wtitle}} (本题计{{ pte9.fs }}分)</p>
+            </div>
+         </div>
+
+            <div class="form-group">
+		    <label for="inputAddressEdit" class="col-sm-2 control-label">答题选项</label>
+		    <div class="col-sm-10" style="top: 6px">
+		        <input type="radio" name= "pte9" value="A" checked>A: {{ pte9.is_a }}
+                <input type="radio" name= "pte9" style="margin-left:25px" value="B">B: {{ pte9.is_b }}
+                <input type="radio" name= "pte9" style="margin-left:25px" value="C">C: {{ pte9.is_c }}
+                <input type="radio" name= "pte9" style="margin-left:25px" value="D">D: {{ pte9.is_d }}
+		    </div>
+		  </div>
+
+        <div class="form-group">
+            <label for="inputStudentName" class="col-sm-2 control-label">第十题</label>
+            <div class="col-sm-10" style="top: 6px">
+              <p style="font-size: 14px;">{{pte0.wtitle}} (本题计{{ pte0.fs }}分)</p>
+            </div>
+         </div>
+
+            <div class="form-group">
+		    <label for="inputAddressEdit" class="col-sm-2 control-label">答题选项</label>
+		    <div class="col-sm-10" style="top: 6px">
+		        <input type="radio" name= "pte0" value="A" checked>A: {{ pte0.is_a }}
+                <input type="radio" name= "pte0" style="margin-left:25px" value="B">B: {{ pte0.is_b }}
+                <input type="radio" name= "pte0" style="margin-left:25px" value="C">C: {{ pte0.is_c }}
+                <input type="radio" name= "pte0" style="margin-left:25px" value="D">D: {{ pte0.is_d }}
+		    </div>
+		  </div>
+
+		</form>
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link" id="close">取消</button>
+        <button type="submit" class="btn btn-primary" form="addForm" id="btn">提交</button>
+      </div>
+    </div>
+</div>
+
+<div class="clear" style="clear: both;"></div>
+<div id="messagee" class="messagee" style="width: 400px;height: 200px;background-color: white;border: 2px solid #EAF2D3;top: 600px;left:360px;position: absolute;display: none">
+    <h4 style="font-size: 32px;margin-left: 122px;margin-top: 20px;color: black">提交成功！</h4>
+    <div id="fsxs" style="width: 104px;height: 38px;text-align: center;font-size: 22px;margin-top: 20px;margin-left: 140px;"></div>
+    <div class="addd" style="width: 104px;height: 38px;border: 1px solid #98bf21;cursor: pointer;text-align: center;font-size: 22px;margin-top: 30px;margin-left: 140px;">返回</div>
+</div>
+
+<script>
+
+    $('#close').click(()=>{
+          $.ajax({
+                    url: '/st/stu_paper/',  //回到试题试卷展示页面
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+
+    $('#close0').click(()=>{
+          $.ajax({
+                    url: '/st/stu_paper/',
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+
+    var get_val = ()=>{
+        // 获取具体的值
+        var pte = $('input[name="pte"]:checked').val();
+        var pte2 = $('input[name="pte2"]:checked').val();
+        var pte3 = $('input[name="pte3"]:checked').val();
+        var pte4 = $('input[name="pte4"]:checked').val();
+        var pte5 = $('input[name="pte5"]:checked').val();
+        var pte6 = $('input[name="pte6"]:checked').val();
+        var pte7 = $('input[name="pte7"]:checked').val();
+        var pte8 = $('input[name="pte8"]:checked').val();
+        var pte9 = $('input[name="pte9"]:checked').val();
+        var pte0 = $('input[name="pte0"]:checked').val();
+
+        {#var ptee = $('#ptee').val();//#}
+
+        var sp_data = {
+            'pte':pte,
+            'pte2':pte2,
+            'pte3':pte3,
+            'pte4':pte4,
+            'pte5':pte5,
+            'pte6':pte6,
+            'pte7':pte7,
+            'pte8':pte8,
+            'pte9':pte9,
+            'pte0':pte0,
+            {#'ptee':ptee,#}
+        };
+        sp_data = JSON.stringify(sp_data);
+        return sp_data;
+    };
+
+    console.log(get_val());
+
+    $('#btn').click(()=>{
+        var data = get_val();
+        var sp_id = $(".edit").data('id');
+        $.ajax({
+            url:'/st/sub_paper/',
+            type:'post',
+            async:false,
+            data:{
+                'data':data,
+                'sp_id':sp_id
+            },
+            success:(data)=>{
+                console.log(data);
+                    $('.messagee').css('display','block');
+                    $("#fsxs").html(data['info']);      //JsonResponse把分数值传到框里并显示
+                {#alert(data)#}
+                {#alert("修改成功，点击确认后跳转回首页......");#}
+            }
+        })
+    });
+
+    $('.addd').click(()=>{
+        $('.messagee').css('display','none');
+        $.ajax({
+                    url: '/st/stu_paper/',
+                    type: 'get',
+                    success:(data)=>{
+                        $('#mian').css('display', 'block');
+                        $('.infof').html(data);
+                    }
+                })
+    });
+
+</script>
